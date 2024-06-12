@@ -1,0 +1,107 @@
+
+entity LCD is
+    Port ( clk : in STD_LOGIC;
+           data : out STD_LOGIC_VECTOR (7 downto 0);
+           rw : out STD_LOGIC;
+           rs : out STD_LOGIC;
+           e : out STD_LOGIC);
+end LCD;
+
+architecture Behavioral of LCD is
+signal  count : integer   := 0;
+
+begin
+
+ p1 : process(clk)
+begin
+if (clk 'event and clk ='1') then  
+count <= count+1;
+if (count <2000000 ) then 
+rs<='0';
+e<='0';
+rw<='1';
+
+ elsif (count =2000000) then e<='1' ;rw<='0'; data<= X"38"; 
+ elsif (count = 2000100) then e<='0' ;rw<='1';rs<='0';
+ 
+ 
+ 
+  elsif (count =2004100 ) then e<='1' ;rw<='0'; data<=X"06" ;
+ elsif (count = 2004200 ) then e<='0' ;rw<='1';rs<='0';
+
+
+ elsif (count =2008200) then e<='1' ; rw<='0';data<=X"0C" ;
+ elsif (count = 2008300 ) then e<='0' ;rw<='1';rs<='0';
+
+
+ elsif (count = 2012300 ) then e<='1' ;rw<='0'; data<=X"01" ;
+ elsif  (count = 2012400 ) then e<='0' ;rw<='1';rs<='0';
+
+ elsif (count =2176400 ) then e<='1' ;rw<='0'; data<=X"5F" ;rs<='1';
+ elsif (count =2176500 ) then e<='0' ;rw<='1';rs<='0';
+
+ elsif (count = 2180500 ) then e<='1' ; rw<='0';rs<='1';data<=X"59" ;  --Y
+ elsif (count = 2180600 ) then e<='0' ;rw<='1';rs<='0';
+ 
+  elsif (count =2184600 ) then e<='1' ; rw<='0';rs<='1';data<=X"41" ;  --A
+ elsif (count = 2184700 ) then e<='0' ;rw<='1';rs<='0';
+
+
+ elsif (count =2188700 ) then e<='1' ; rw<='0'; rs<='1'; data<=X"26" ; -- &
+ elsif  (count = 2188800 ) then e<='0' ;rw<='1';rs<='0';
+
+
+ elsif (count = 2192800) then e<='1' ;rw<='0'; rs<='1'; data<=X"53" ;   --S
+ elsif (count = 2192900 ) then e<='0' ;rw<='1';rs<='0';
+
+
+ elsif (count = 2196900 ) then e<='1' ;rw<='0';rs<='1';  data<=X"41"; ---A
+ elsif (count =2197000 ) then e<='0' ;rw<='1';rs<='0';
+
+elsif (count =2201000 ) then e<='1' ;rw<='0'; rs<='1'; data<=X"32" ;   -- 2
+ elsif (count = 2201100 ) then e<='0' ;rw<='1';rs<='0';
+ 
+ 
+ elsif (count =2205100 ) then e<='1' ;rw<='0'; rs<='1'; data<=X"33" ;   ---3
+ elsif (count =2205200 ) then e<='0' ;rw<='1';rs<='0';
+
+
+ elsif (count = 2209200 ) then e<='1' ;rw<='0';rs<='1';  data<=X"2F" ;   --/
+ elsif (count = 2209300 ) then e<='0' ;rw<='1';rs<='0';
+
+
+ elsif (count = 2213300 ) then e<='1' ;rw<='0';  rs<='1';data<=X"30" ;   -- 0
+ elsif (count = 2213400 ) then e<='0' ;rw<='1';rs<='0';
+
+
+ elsif (count = 2217400 ) then e<='1' ;rw<='0'; rs<='1'; data<=X"35" ;   --5
+ elsif (count =2217500 ) then e<='0' ;rw<='1';rs<='0';
+ 
+  elsif (count = 2221500 ) then e<='1' ; rw<='0';rs<='1'; data<=X"2F"; ---/
+ elsif (count = 2221600 ) then e<='0' ;rw<='1';rs<='0';
+
+
+ elsif (count = 2225600 ) then e<='1' ; rw<='0';rs<='1'; data<= X"32" ; --2
+ elsif(count = 2225700 ) then e<='0' ;rw<='1';rs<='0';
+
+
+elsif (count =2229700 ) then e<='1' ; rw<='0'; rs<='1'; data<=X"30" ; -- 0
+elsif (count =2229800) then e<='0' ;rw<='1';rs<='0';
+
+
+elsif (count =2233800 ) then e<='1' ; rw<='0';rs<='1'; data<=X"32" ; -- 2
+elsif (count =2233400 ) then e<='0' ;rw<='1';rs<='0';
+
+
+ elsif (count =2237400 ) then e<='1' ;rw<='0';rs<='1';  data<=X"34" ; -- 4
+ elsif(count =2237500 ) then e<='0' ;rw<='1';rs<='0';
+
+end if;
+
+
+
+end if;
+
+end process;
+
+end Behavioral;

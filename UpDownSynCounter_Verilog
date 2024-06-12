@@ -1,0 +1,31 @@
+
+
+module UpDownSynCounter(
+    input clk,
+    input UpDown,
+    input reset,
+    output reg  [3:0] Q
+    );
+    always @(posedge clk ,negedge reset)
+    begin 
+    if(! reset)
+    Q<=0;
+    else 
+    if (UpDown)
+    begin 
+    if (Q<9)
+    Q=Q+1;
+    else 
+    Q<=0;
+    end 
+    else if (! UpDown)
+    begin
+    if (!Q)
+    Q<=9;
+    else 
+    Q<=Q-1;
+    end 
+    end
+    
+    
+endmodule

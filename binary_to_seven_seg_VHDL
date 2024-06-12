@@ -1,0 +1,45 @@
+
+entity binary_to_seven_seg is
+    Port ( data : in STD_LOGIC_VECTOR (3 downto 0);
+           aa : out STD_LOGIC;
+           ab : out STD_LOGIC;
+           ac : out STD_LOGIC;
+           ad : out STD_LOGIC;
+           ae : out STD_LOGIC;
+           af : out STD_LOGIC;
+           ag : out STD_LOGIC
+           );
+end binary_to_seven_seg;
+
+architecture Behavioral of binary_to_seven_seg is
+
+begin
+process (data) 
+begin 
+case data is 
+
+when "0000"=>  aa<='1';   ab<='1';  ac<='1';  ad<='1';  ae<='1' ; af<='1';  ag<='0'; 
+when "0001"=>  aa<='0';   ab<='1';  ac<='1';  ad<='0';  ae<='0' ; af<='0';  ag<='0'; 
+when "0010"=>  aa<='1';   ab<='1';  ac<='0';  ad<='1';  ae<='1' ; af<='0';  ag<='1'; 
+when "0011"=>  aa<='1';   ab<='1';  ac<='1';  ad<='1';  ae<='0' ; af<='0';  ag<='1'; 
+when "0100"=>  aa<='0';   ab<='1';  ac<='1';  ad<='0';  ae<='0' ; af<='1';  ag<='1'; 
+when "0101"=>  aa<='1';   ab<='0';  ac<='1';  ad<='1';  ae<='0' ; af<='1';  ag<='1'; 
+when "0110"=>  aa<='1';   ab<='0';  ac<='1';  ad<='1';  ae<='1' ; af<='1';  ag<='1'; 
+when "0111"=>  aa<='1';   ab<='1';  ac<='1';  ad<='0';  ae<='0' ; af<='0';  ag<='0'; 
+when "1000"=>  aa<='1';   ab<='1';  ac<='1';  ad<='1';  ae<='1' ; af<='1';  ag<='1'; 
+when "1001"=>  aa<='1';   ab<='1';  ac<='1';  ad<='1';  ae<='0' ; af<='1';  ag<='1'; 
+when "1010"=>  aa<='1';   ab<='1';  ac<='1';  ad<='0';  ae<='1' ; af<='1';  ag<='1'; 
+when "1011"=>  aa<='0';   ab<='0';  ac<='1';  ad<='1';  ae<='1' ; af<='1';  ag<='1'; 
+when "1100"=>  aa<='1';   ab<='0';  ac<='0';  ad<='1';  ae<='1' ; af<='1';  ag<='0'; 
+when "1101"=>  aa<='0';   ab<='1';  ac<='1';  ad<='1';  ae<='1' ; af<='0';  ag<='1'; 
+when "1110"=>  aa<='1';   ab<='0';  ac<='0';  ad<='1';  ae<='1' ; af<='1';  ag<='1'; 
+when "1111"=>  aa<='1';   ab<='0';  ac<='0';  ad<='0';  ae<='1' ; af<='1';  ag<='1'; 
+
+    
+
+
+end case;
+
+end process ;
+
+end Behavioral;

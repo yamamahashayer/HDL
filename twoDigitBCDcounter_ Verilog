@@ -1,0 +1,49 @@
+
+module twoDigitBCDcounter(
+    input clk,
+    input reset,
+    input updown,
+    output reg [3:0] BCD0,
+    output reg [3:0] BCD1
+    );
+   always @(negedge reset, posedge clk)
+   begin 
+   if (!reset)
+   begin 
+   BCD0<=0;
+   BCD1<=0;
+   end 
+   
+   else  
+    begin 
+    if (updown)
+    if (BCD1<9)
+   
+    BCD0<=BCD0+1;
+    else 
+    begin
+    BCD0<=0;
+    if (BCD1<9)
+    BCD1<=BCD1+1;
+   else 
+    BCD1<=0;
+    end
+    else
+     begin
+    if (BCD0>0)
+      BCD0=BCD0-1;
+   else 
+   begin
+   BCD0=9;
+   if (BCD1>0)
+     BCD1=BCD1-1;
+    else 
+    BCD1=9;
+     
+  end 
+  end   
+   
+  end 
+  end 
+   
+endmodule

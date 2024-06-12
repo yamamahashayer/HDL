@@ -1,0 +1,39 @@
+
+module pb_debouncer(
+    input clk,
+    input pb,
+    output pb_D
+    );
+    
+   reg on_change=0;
+   reg old_pb;
+   
+   integer count=0;
+   assign pb_D=old_pb;
+    
+   always @ (posedge clk )
+    begin 
+    if (!on_change)
+         begin 
+    if (!old_pb == pb)
+         begin
+         on_change=1;
+         old_pb = !old_pb;
+         end 
+         end
+        else 
+        begin 
+        if (count==1000000)
+        begin 
+        on_change=0;
+        count=0;
+        end 
+       
+        else 
+       begin
+        count=count+1;
+        end
+        end
+        end   
+    
+endmodule

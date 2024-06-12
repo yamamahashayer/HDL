@@ -1,0 +1,38 @@
+
+entity pb_depouncer is
+    Port ( clk : in STD_LOGIC;
+           pb_old : in STD_LOGIC;
+           pb : out STD_LOGIC);
+end pb_depouncer;
+
+architecture Behavioral of pb_depouncer is
+signal on_chang :std_logic :='0';
+signal old :std_logic :='0';
+signal count :integer :=0;
+begin
+
+ process( clk) 
+begin 
+if (rising_edge (clk))then 
+if (on_chang ='0')then
+
+if  (pb_old/= old )then 
+on_chang<='1';
+old<=not old;
+
+end if;
+ 
+ elsif (count =1000000)
+ then count<=0;
+ on_chang <='0';
+ else count<=count+1;
+ end if ;
+ end if ;
+
+pb<=pb_old;
+
+
+end process;
+
+
+end Behavioral;

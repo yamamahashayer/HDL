@@ -1,0 +1,25 @@
+
+module time_mux(
+    input [3:0] d0,
+    input [3:0] d1,
+    input clk,
+    output reg [3:0] bcd_out,
+    output reg digit_select
+    );
+    integer i =0;
+    always @ (posedge clk)
+    begin 
+    if (i==1000000)
+    begin
+    i=0;
+    digit_select = ~digit_select;
+    end 
+    else 
+    i=i+1;
+    if (  digit_select)
+    bcd_out=d0;
+    else bcd_out = d1;
+    end 
+    
+    
+endmodule
